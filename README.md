@@ -1,3 +1,7 @@
+# React, Three JS, and react-three-fiber with TypeScript
+
+This repository is intended as the simplest example of using react-three-fiber (and orbit controls) with TypeScript. It follows the first part of [this tutorial](https://dev.to/manan30/creating-a-rudimentary-pool-table-game-using-react-three-js-and-react-three-fiber-part-1-363l) by [Manan Joshi](https://dev.to/manan30) and a [handy comment from Paul Henschel](https://spectrum.chat/react-three-fiber/general/property-orbitcontrols-does-not-exist-on-type-jsx-intrinsicelements~44712e68-4601-4486-b4b4-5e112f3dc09e).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
