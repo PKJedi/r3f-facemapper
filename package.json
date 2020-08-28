@@ -1,5 +1,5 @@
 {
-  "name": "digging-the-data-reprise",
+  "name": "react-three-fiber-typescript",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,7 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0",
+    "react-scripts": "^3.4.1",
     "react-three-fiber": "^4.0.12",
     "three": "^0.112.1"
   },
@@ -32,5 +32,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "typescript": "^4.0.2"
   }
 }
