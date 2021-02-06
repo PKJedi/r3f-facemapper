@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useContext, useRef } from 'react';
 
 import { Physics, usePlane, useBox } from '@react-three/cannon';
 
@@ -78,47 +78,43 @@ function Cube({ position }: { position: Array<number> }) {
   );
 }
 
-const vertexShaderSource = `
-varying vec3 vUv;
-varying vec3 vNormal;
-
-void main() {
-  vUv = position;
-  vNormal = normal;
-
-  vec4 modelViewPosition = modelViewMatrix * vec4(position, 1.0);
-  gl_Position = projectionMatrix * modelViewPosition; 
-}
-`;
-
-const fragmentShaderSource = `
-varying vec3 vUv;
-varying vec3 vNormal;
-void main(void) {
-  mat4 camera = inverse(viewMatrix);
-  float color = clamp(dot(vNormal, camera[2].xyz)-0.5, 0.0, 1.0);
-  pc_fragColor = vec4(color, color, color, 1.0);
-}
-`;
-
 const Scene: React.FC = () => {
   const [cubes, setCubes] = useState(4);
 
+  const textureRef = useRef<THREE.CanvasTexture>();
+  setInterval(() => {
+    if (textureRef.current) {
+      textureRef.current!.needsUpdate = true;
+    }
+  }, 50);
+
   return (
     <Physics>
-      <ambientLight args={[0x202020]} />
+      <ambientLight args={[0x707070]} />
 
       <pointLight
         position={[5, 1, 5]}
         castShadow
-        intensity={0.1}
+        intensity={5}
         shadow-mapSize-width={4056}
         shadow-mapSize-height={4056}
       />
-      <mesh position={[5, 1, 5]}>
-        <sphereBufferGeometry attach="geometry" args={[1, 16, 12]} />
-        <shaderMaterial vertexShader={vertexShaderSource}  fragmentShader={fragmentShaderSource} />
-      </mesh>
+      {document.querySelector('canvas#landmarks') && (
+        <mesh
+          position={[0, 1.5, 0]}
+          scale={[1.5, 1.5, 1.5]}
+          rotation={[0, -Math.PI / 2, 0]}
+        >
+          <sphereBufferGeometry attach="geometry" args={[1, 16, 12]} />
+          <meshStandardMaterial attach="material">
+            <canvasTexture
+              ref={textureRef}
+              attach="map"
+              image={document.querySelector('canvas#landmarks')}
+            />
+          </meshStandardMaterial>
+        </mesh>
+      )}
 
       <Plane
         args={[10, 0.1, 10]}
