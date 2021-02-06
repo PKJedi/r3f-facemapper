@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-three/cannon": "^0.5.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "culori": "^0.18.0",
+    "prettier": "^2.2.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-scripts": "^3.4.1",
-    "react-three-fiber": "^4.0.12",
-    "three": "^0.112.1"
+    "react-three-fiber": "^5.3.18",
+    "three": "^0.120.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -5,7 +5,7 @@ import Scene from './components/Scene';
 import './App.css';
 
 const App: React.FC = () => (
-  <Canvas>
+  <Canvas shadowMap>
     <Scene />
     <Controls />
   </Canvas>
